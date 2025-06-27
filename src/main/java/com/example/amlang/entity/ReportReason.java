@@ -1,0 +1,29 @@
+package com.example.amlang.entity;
+
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "report_reasons")
+@Data
+public class ReportReason {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long reasonId;
+
+    @NotNull
+    @Size(max = 100)
+    @Column(nullable = false, unique = true)
+    private String reasonName;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
+}

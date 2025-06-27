@@ -1,0 +1,4 @@
+package com.example.amlang.enums;
+
+public class TransactionType {
+}

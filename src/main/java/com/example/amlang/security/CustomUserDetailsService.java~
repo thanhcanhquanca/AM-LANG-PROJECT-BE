@@ -1,0 +1,31 @@
+package com.example.amlang.security;
+
+import com.example.amlang.entity.User;
+import com.example.amlang.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {
+        User user = userRepository.findByPhoneNumber(phoneNumber)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with phone number: " + phoneNumber));
+
+        // Tạo UserDetails với mật khẩu đã mã hóa
+        return new org.springframework.security.core.userdetails.User(
+                user.getPhoneNumber(),
+                user.getPassword(), // Mật khẩu đã mã hóa từ cơ sở dữ liệu
+                Collections.singletonList(() -> "ROLE_" + user.getRole().getRoleName()) // Gán vai trò
+        );
+    }
+}

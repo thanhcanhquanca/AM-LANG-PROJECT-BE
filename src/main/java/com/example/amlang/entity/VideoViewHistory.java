@@ -1,0 +1,31 @@
+package com.example.amlang.entity;
+
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "video_view_history")
+@Data
+public class VideoViewHistory {
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "video_id")
+    private Video video;
+
+    @Id
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime viewedAt;
+
+    @NotNull
+    @Column(columnDefinition = "INT DEFAULT 0")
+    private Integer durationWatched;
+}

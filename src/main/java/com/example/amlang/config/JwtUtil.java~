@@ -1,0 +1,4 @@
+package com.example.amlang.config;
+
+public class JwtUtil {
+}

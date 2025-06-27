@@ -1,0 +1,4 @@
+package com.example.amlang.dto;
+
+public class LoginRequestDTO {
+}

@@ -1,0 +1,27 @@
+package com.example.amlang.entity;
+
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "playlist_videos", indexes = {
+        @Index(name = "idx_video_id", columnList = "video_id")
+})
+@Data
+public class PlaylistVideo {
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "playlist_id")
+    private Playlist playlist;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "video_id")
+    private Video video;
+
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime addedAt;
+}

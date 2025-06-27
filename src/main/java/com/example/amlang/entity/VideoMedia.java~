@@ -1,0 +1,32 @@
+package com.example.amlang.entity;
+ 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "video_media", indexes = {
+        @Index(name = "idx_video_id", columnList = "video_id")
+})
+@Data
+public class VideoMedia {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long mediaId;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "video_id", nullable = false)
+    private Video video;
+
+    @NotNull
+    @Size(max = 255)
+    @Column(nullable = false)
+    private String fileUrl;
+
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
+}
