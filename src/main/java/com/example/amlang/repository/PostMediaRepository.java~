@@ -1,0 +1,4 @@
+package com.example.amlang.repository;
+
+public class PostMediaRepository {
+}

@@ -1,0 +1,17 @@
+package com.example.amlang.dto;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Data
+public class PostDetailResponseDTO {
+    private String userName;
+    private String profilePicture;
+    private String coverPhoto;
+    private LocalDateTime createdAt;
+    private String content;
+    private List<String> mediaUrls; // Danh sách URL của ảnh
+    private String visibility;      // Thêm visibility
+    private String userCode;        // Thêm userCode
+}

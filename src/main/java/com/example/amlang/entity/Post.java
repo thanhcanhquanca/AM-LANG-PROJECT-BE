@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "posts", indexes = {
@@ -38,18 +38,18 @@ public class Post {
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-    private Set<PostMedia> media;
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PostMedia> media;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-    private Set<PostView> views;
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PostView> views;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-    private Set<PostLike> likes;
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PostLike> likes;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-    private Set<PostShare> shares;
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PostShare> shares;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-    private Set<Comment> comments;
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Comment> comments;
 }
