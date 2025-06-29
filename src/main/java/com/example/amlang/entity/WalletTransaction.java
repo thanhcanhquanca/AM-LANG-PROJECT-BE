@@ -1,6 +1,5 @@
 package com.example.amlang.entity;
 
-
 import com.example.amlang.enums.TransactionStatus;
 import com.example.amlang.enums.TransactionType;
 import jakarta.persistence.*;

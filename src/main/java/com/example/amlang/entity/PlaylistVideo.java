@@ -1,6 +1,5 @@
 package com.example.amlang.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 

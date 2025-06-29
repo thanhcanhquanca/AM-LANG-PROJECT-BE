@@ -1,12 +1,11 @@
 package com.example.amlang.entity;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "video_categories")
@@ -28,5 +27,5 @@ public class VideoCategory {
     private String description;
 
     @OneToMany(mappedBy = "videoCategory", fetch = FetchType.LAZY)
-    private Set<Video> videos;
+    private List<Video> videos;
 }

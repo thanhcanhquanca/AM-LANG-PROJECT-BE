@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "playlists", indexes = {
@@ -47,5 +47,5 @@ public class Playlist {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "playlist", fetch = FetchType.LAZY)
-    private Set<PlaylistVideo> videos;
+    private List<PlaylistVideo> videos;
 }

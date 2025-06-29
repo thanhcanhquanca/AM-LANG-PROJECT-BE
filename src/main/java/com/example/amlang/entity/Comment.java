@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "comments", indexes = {
@@ -47,11 +47,11 @@ public class Comment {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
-    private Set<CommentImage> images;
+    private List<CommentImage> images;
 
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
-    private Set<CommentLike> likes;
+    private List<CommentLike> likes;
 
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
-    private Set<CommentMention> mentions;
+    private List<CommentMention> mentions;
 }

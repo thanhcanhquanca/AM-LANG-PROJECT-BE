@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "videos", indexes = {
@@ -59,31 +59,31 @@ public class Video {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "video", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<VideoMedia> media;
+    private List<VideoMedia> media;
 
     @OneToMany(mappedBy = "video", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<VideoView> views;
+    private List<VideoView> views;
 
     @OneToMany(mappedBy = "video", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<VideoLike> likes;
+    private List<VideoLike> likes;
 
     @OneToMany(mappedBy = "video", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<VideoShare> shares;
+    private List<VideoShare> shares;
 
     @OneToMany(mappedBy = "video", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Comment> comments;
+    private List<Comment> comments;
 
     @OneToMany(mappedBy = "video", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<PlaylistVideo> playlists;
+    private List<PlaylistVideo> playlists;
 
     @OneToMany(mappedBy = "video", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<WatchLater> watchLater;
+    private List<WatchLater> watchLater;
 
     @OneToOne(mappedBy = "video", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private VideoMonetization monetization;
 
     @OneToMany(mappedBy = "video", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<VideoCopyright> copyrights;
+    private List<VideoCopyright> copyrights;
 
     @PrePersist
     protected void onCreate() {

@@ -1,5 +1,6 @@
 package com.example.amlang.entity;
 
+
 import com.example.amlang.enums.CampaignObjective;
 import com.example.amlang.enums.CampaignStatus;
 import jakarta.persistence.*;
@@ -9,7 +10,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "ad_campaigns")
@@ -68,5 +69,5 @@ public class AdCampaign {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "campaign", fetch = FetchType.LAZY)
-    private List<Ad> ads;
+    private Set<Ad> ads;
 }

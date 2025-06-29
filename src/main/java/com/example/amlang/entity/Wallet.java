@@ -1,13 +1,12 @@
 package com.example.amlang.entity;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.math.BigDecimal;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "wallets")
@@ -33,5 +32,5 @@ public class Wallet {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "wallet", fetch = FetchType.LAZY)
-    private Set<WalletTransaction> transactions;
+    private List<WalletTransaction> transactions;
 }

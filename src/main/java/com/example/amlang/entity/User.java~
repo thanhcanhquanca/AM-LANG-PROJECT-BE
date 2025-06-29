@@ -5,7 +5,6 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,31 +15,31 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @NotBlank(message = "Tên người dùng không được để trống")
-    @Size(min = 3, max = 50, message = "Tên người dùng phải từ 3 đến 50 ký tự")
+    @NotBlank(message = "TÃªn ngÆ°á»�i dÃ¹ng khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng")
+    @Size(min = 3, max = 50, message = "TÃªn ngÆ°á»�i dÃ¹ng pháº£i tá»« 3 Ä‘áº¿n 50 kÃ½ tá»±")
     @Column(nullable = false)
     private String userName;
 
-    @NotBlank(message = "Số điện thoại không được để trống")
-    @Pattern(regexp = "^\\d{4,20}$", message = "Số điện thoại phải từ 4 đến 20 chữ số")
+    @NotBlank(message = "Sá»‘ Ä‘iá»‡n thoáº¡i khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng")
+    @Pattern(regexp = "^\\d{4,20}$", message = "Sá»‘ Ä‘iá»‡n thoáº¡i pháº£i tá»« 4 Ä‘áº¿n 20 chá»¯ sá»‘")
     @Column(nullable = false, unique = true)
     private String phoneNumber;
 
-    @Email(message = "Email không hợp lệ")
+    @Email(message = "Email khÃ´ng há»£p lá»‡")
     @Column(unique = true)
     private String email;
 
-    @NotBlank(message = "Mật khẩu không được để trống")
-    @Size(min = 6, message = "Mật khẩu phải có ít nhất 6 ký tự")
+    @NotBlank(message = "Máº­t kháº©u khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng")
+    @Size(min = 6, message = "Máº­t kháº©u pháº£i cÃ³ Ã­t nháº¥t 6 kÃ½ tá»±")
     @Column(nullable = false)
     private String password;
 
-    @NotNull(message = "Vai trò không được để trống")
+    @NotNull(message = "Vai trÃ² khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @NotNull(message = "Trạng thái không được để trống")
+    @NotNull(message = "Tráº¡ng thÃ¡i khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng")
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UserStatus status = UserStatus.ACTIVE;
@@ -80,16 +79,16 @@ public class User {
     private String qrCode;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Post> posts = new ArrayList<>();
+    private List<Post> posts;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Video> videos = new ArrayList<>();
+    private List<Video> videos;
 
     @OneToMany(mappedBy = "follower", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Follow> followers = new ArrayList<>();
+    private List<Follow> followers;
 
     @OneToMany(mappedBy = "followed", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Follow> following = new ArrayList<>();
+    private List<Follow> following;
 
     @PrePersist
     protected void onCreate() {

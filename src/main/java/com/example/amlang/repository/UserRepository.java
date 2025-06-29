@@ -5,6 +5,7 @@ import com.example.amlang.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -15,4 +16,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUserCode(String userCode);
     Optional<User> findByProfilePicture(String profilePicture);
     Optional<User> findByCoverPhoto(String coverPhoto);
+    List<User> findByPhoneNumberIn(List<String> phoneNumbers);
 }

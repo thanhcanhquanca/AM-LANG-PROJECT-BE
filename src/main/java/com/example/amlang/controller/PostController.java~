@@ -58,17 +58,6 @@ public class PostController {
         }
     }
 
-    @GetMapping("/by-active-phones")
-    public ResponseEntity<?> getPostsByActivePhoneNumbers() {
-        try {
-            List<PostDetailResponseDTO> posts = postService.getPostsByActivePhoneNumbers();
-            if (posts.isEmpty()) {
-                return ResponseEntity.ok(Map.of("message", "Không có bài viết nào từ các số điện thoại có bài viết."));
-            }
-            return ResponseEntity.ok(posts);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("error", "Lỗi khi lấy bài viết: " + e.getMessage()));
-        }
-    }
+
 
 }
